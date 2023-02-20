@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serkan Polat Portfolio</title>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script>
+      function ScrollTo(element) {
+        var id = document.getElementById(element);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- First part-->
+    <div class="header">
+      <nav>
+        <!--Animation part-->
+        <h2 class="logo">
+          <img src="img/Logo_SPWeb_Creations.svg" alt="logo white background" />
+        </h2>
+        <div class="console-container">
+          <span id="text"></span>
+          <div class="console-underscore" id="console">
+            &#95;
+            <script>
+              // function([string1, string2],target id,[color1,color2])
+              consoleText(
+                [
+                  "Portfolio",
+                  "Serkan Polat",
+                  "Hello World.",
+                  "Coffee break",
+                  "agile programming",
+                  "this is an AI",
+                  "(No it isn't)",
+                  "Scrum is great!",
+                  "innovative",
+                  "creative",
+                  "design",
+                  "optimistic",
+                  "teamwork == dreamwork",
+                  "front-end",
+                ],
+                "text",
+                ["black", "grey", "red"]
+              );
+
+              function consoleText(words, id, colors) {
+                if (colors === undefined) colors = ["#fff"];
+                var visible = true;
+                var con = document.getElementById("console");
+                var letterCount = 1;
+                var x = 1;
+                var waiting = false;
+                var target = document.getElementById(id);
+                target.setAttribute("style", "color:" + colors[0]);
+                window.setInterval(function () {
+                  if (letterCount === 0 && waiting === false) {
+                    waiting = true;
+                    target.innerHTML = words[0].substring(0, letterCount);
+                    window.setTimeout(function () {
+                      var usedColor = colors.shift();
+                      colors.push(usedColor);
+                      var usedWord = words.shift();
+                      words.push(usedWord);
+                      x = 1;
+                      target.setAttribute("style", "color:" + colors[0]);
+                      letterCount += x;
+                      waiting = false;
+                    }, 100);
+                  } else if (
+                    letterCount === words[0].length + 1 &&
+                    waiting === false
+                  ) {
+                    waiting = true;
+                    window.setTimeout(function () {
+                      x = -1;
+                      letterCount += x;
+                      waiting = false;
+                    }, 100);
+                  } else if (waiting === false) {
+                    target.innerHTML = words[0].substring(0, letterCount);
+                    letterCount += x;
+                  }
+                }, 120);
+                window.setInterval(function () {
+                  if (visible === true) {
+                    con.className = "console-underscore hidden";
+                    visible = false;
+                  } else {
+                    con.className = "console-underscore";
+
+                    visible = true;
+                  }
+                }, 120);
+              }
+            </script>
+          </div>
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="#about">About me</a></li>
+            <li><a href="#SkillsTxt">Skills</a></li>
+            <li><a href="#CVTxt">CV</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="content"></div>
+    </div>
+
+    <!-- About me Section-->
+    <section>
+      <div id="about" class="about">
+        <div class="main">
+          <div class="about-text">
+            <h2>About me</h2>
+            <h5>Website Design and programming</h5>
+            <p>cats, programming, travelling, eating, reading</p>
+
+            <button type="button" onClick="email()">email me</button>
+            <script>
+              function email(target) {
+                // Target refers to the clicked element
+                window.location.href = "mailto:serkan.polat@ksb-sg.ch";
+              }
+            </script>
+          </div>
+          <img src="img\ManuUndLejl.jpg" alt="myCats" />
+          <img src="img\SerkanItaly.PNG" alt="Boy thumbs up" />
+        </div>
+      </div>
+    </section>
+
+    <!--Skills section  -->
+    <section id="SkillsTxt" class="skills">
+      <div class="skillsMain">
+        <img src="img\SerkanCodingHelloWorldInHTML.jpg" alt="Programming" />
+        <img src="img\SerkanPolat.jpg" alt="HappyProgramming" />
+        <div class="skills-text">
+          <h2>Skills</h2>
+          <h5>Programming languages and other skills</h5>
+          <p>
+            UML: sequence diagram, activity distribution chart, use-case,
+            business process model and notation, state diagram, Class Diagram,
+            Package Diagram, Object Diagram
+            <br />
+            <br />
+            Programming Languages: Java, C#, C, ADO.NET, ASP.NET, FXML, SQL
+            <br />
+            <br />
+            other skills: HTML, CSS, AdobeXD, Premier Pro, PHP
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV section -->
+    <section id="CVTxt" class="CV">
+      <div class="CVMain">
+        <div class="CVText">
+          <h2>CV</h2>
+          <h5>places where I worked</h5>
+          <p>Press here for CV</p>
+          <br />
+          <br />
+          <p>
+            ==>
+            <a
+              target="_blank"
+              href="img/Serkan-Polat_CV_2022-12_in progress_Digital.pdf"
+              >Serkan Polat CV</a
+            >
+            <==
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <a
+        href="#top"
+        class="back-to-top-link"
+        aria-label="Scroll to Top"
+        section
+        id="contactMe"
+      >
+        | Back to top |
+      </a>
+      <div class="socialMedia">
+        <!-- Add Social Media-->
+        <div class="social-container">
+          <ul class="social-icons">
+            <li>
+              <a target="_blank" href="https://www.instagram.com/xseko_2003x/"
+                ><i class="fa fa-instagram"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/serkan-polat-22357920a/"
+                ><i class="fa fa-linkedin"></i
+              ></a>
+            </li>
+            <li>
+              <a target="_blank" href="https://github.com/SePoLoLoL"
+                ><i class="fa fa-github"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mailto">
+        <p>
+          Contact me: <a href="mailto:serkan.polat@ksb-sg.ch">Serkan Polat</a>
+        </p>
+      </div>
+      <p>Follow or connect with me</p>
+      <p class="end">©Copyright and design by SP Web creations</p>
+    </footer>
+  </body>
+</html>
